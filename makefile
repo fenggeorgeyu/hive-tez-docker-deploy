@@ -1,8 +1,8 @@
 # @version Tue May  7 19:32:20 2019
 # reference https://github.com/big-data-europe/docker-hive
 
-name=hive-dk1
-image=bde2020/hive
+name=hive-server
+# image=bde2020/hive
 host_dir=$(shell pwd)
 stack_name=hc
 
@@ -10,9 +10,11 @@ create: compose
 
 compose:
 	docker-compose up -d
+	# docker-compose exec -d ${name} /etc/bootstrap.sh
 
 start:
 	docker-compose start
+	# docker-compose exec -d ${name} /etc/bootstrap.sh
 
 stop:
 	docker-compose stop
@@ -27,7 +29,7 @@ delete:
 hive-bash:
 	docker-compose exec hive-server bash
 
-hive-sql:
+hive-ql:
 	docker-compose exec hive-server hive
 
 deploy:

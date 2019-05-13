@@ -10,8 +10,7 @@ services:
       - ./shared:/shared
     ports:
       - "10000:10000"
-    command: 
-      - /etc/bootstrap.sh
+    # command: ["/etc/bootstrap.sh"]
     deploy:
       placement:
         constraints:
