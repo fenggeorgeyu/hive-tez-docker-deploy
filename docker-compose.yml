@@ -1,0 +1,27 @@
+
+
+version: "3"
+
+services:
+  hive-server:
+    image: prasanthj/docker-hive-on-tez
+    volumes:
+      - hive_on_tez
+      - ./shared:/shared
+    ports:
+      - "10000:10000"
+    command: 
+      - /etc/bootstrap.sh
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+          # - node.role == worker
+
+volumes:
+  hive_on_tez:
+# networks:
+#   ingress:
+
+
+
